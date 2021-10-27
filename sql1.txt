@@ -1,0 +1,5 @@
+CREATE TABLE postac (id_postaci INT  PRIMARY KEY AUTO_INCREMENT, nazwa VARCHAR(40), rodzaj ENUM('wiking','ptak','kobieta'), data_ur DATE, wiek INT);
+INSERT INTO postac VALUES(1,'Bjorn','wiking','1998-01-01',23);
+INSERT INTO postac VALUES(2,'Drozd','ptak','2020-01-01',1);
+INSERT INTO postac VALUES(3,'tesciowa','kobieta','1935',88);
+CREATE TABLE walizka(id_walizki INT PRIMARY KEY AUTO_INCREMENT, pojemnosc INT, kolor ENUM('rozowy','czerwony','teczowy','zolty'), id_wlasciciela INT, FOREIGN KEY (id_wlasciciela) REFERENCES postac(id_postaci));
