@@ -1,0 +1,27 @@
+CREATE TABLE izba(adres_budynku INT, nazwa_izby INT ,PRIMARY KEY(adres_budynku,nazwa_izby), metraz INT UNSIGNED, wlasciciel INT NOT NULL, FOREIGN KEY(wlasciciel) REFERENCES postac(id_postaci));
+
+ALTER TABLE izba
+    -> ADD kolor_izby VARCHAR(40)AFTER metraz;
+    
+ CREATE TABLE przetwory (id_przetworu INT NOT NULL PRIMARY KEY , rok_produkcji DATE DEFAULT '1900-01-01', id_wykonawcy INT, FOREIGN KEY(id_wykonawcy) REFERENCES postac(id_postaci), zawartosc VARCHAR(50), dodatek VARCHAR(50) DEFAULT
+ 'papryczka chilli',id_konsumenta INT NOT NULL, FOREIGN KEY(id_konsumenta) REFERENCES postac(id_postaci));
+ 
+  INSERT INTO przetwory VALUES ('1','1900-01-01 ','1','bigos','papryczka chilli','1');
+
+  INSERT INTO postac VALUES(4,'dawid','wiking','1900-01-01','30');
+  INSERT INTO postac VALUES(5,'pawel','wiking','1900-01-01','30');
+  INSERT INTO postac VALUES(6,'gawron','wiking','1900-01-01','30');
+  INSERT INTO postac VALUES(7,'mandol','wiking','1900-01-01','30');
+  INSERT INTO postac VALUES(8,'heniek','wiking','1900-01-01','30');
+  
+  CREATE TABLE statek (nazwa_statku INT PRIMARY KEY, rodzaj_statku ENUM('maly','duzy'), data_wodowania DATE, max_ladownosc INT UNSIGNED);
+  
+  INSERT INTO statek VALUES (1,'duzy','1800-02-06',100000);
+  INSERT INTO statek VALUES (2,'maly','1800-05-10',1000);
+  
+  ALTER TABLE postac
+    -> ADD funkcja VARCHAR(50);
+    
+     UPDATE postac SET funkcja='kapitan' WHERE id_postaci ='1';
+     
+     ALTER TABLE postac ADD FOREIGN KEY(id_postaci) REFERENCES statek(nazwa_statku);
