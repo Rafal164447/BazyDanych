@@ -1,0 +1,27 @@
+1)
+a)
+DELETE FROM postac WHERE rodzaj="wiking" AND wiek="92";
+DELETE FROM postac WHERE rodzaj="wiking" AND wiek="62";
+b)
+ ALTER TABLE walizka DROP FOREIGN KEY walizka_ibfk_1;
+ ALTER TABLE przetwory DROP FOREIGN KEY przetwory_ibfk_1;
+ ALTER TABLE przetwory DROP FOREIGN KEY przetwory_ibfk_2;
+ ALTER TABLE izba DROP FOREIGN KEY izba_ibfk_1;
+ ALTER TABLE postac MODIFY id_postaci INT;
+ ALTER TABLE postac DROP PRIMARY KEY;
+ 
+
+ 
+2)
+a)
+  ALTER TABLE postac ADD pesel VARCHAR(11);
+  ALTER TABLE postac ADD PRIMARY KEY(pesel);
+b)
+  ALTER TABLE postac MODIFY COLUMN rodzaj ENUM('wiking','ptak','kobieta','syrena');
+c)
+INSERT INTO postac(id_postaci, nazwa, rodzaj, data_ur,wiek,funkcja,pesel) VALUES (8,'Gertruda Nieszczera','syrena','1886-03-09',102,'','12345678903');
+
+3)
+a)
+
+
