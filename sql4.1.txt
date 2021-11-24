@@ -1,0 +1,4 @@
+SELECT waga*0.7 FROM zasob WHERE rodzaj='jedzenie';
+SELECT waga*0.3 FROM zasob WHERE rodzaj='jedzenie';
+SELECT * FROM zasob where rodzaj IS NULL;
+
