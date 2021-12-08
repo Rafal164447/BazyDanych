@@ -1,0 +1,18 @@
+SELECT DISTINCT k.nazwa,z.nazwa FROM kreatura AS k INNER JOIN ekwipunek AS e ON k.idKreatury=e.idKreatury INNER JOIN zasob AS z ON e.idZasobu=z.idZasobu WHERE k.rodzaj LIKE 'wiking' AND k.dataUR BETWEEN '1670-01-01' AND '1679-12-31';
+ 
+SELECT k.nazwa FROM kreatura as k INNER JOIN ekwipunek AS e ON k.idKreatury=e.idKreatury INNER JOIN zasob AS z ON
+e.idZasobu=z.idZasobu WHERE z.rodzaj LIKE 'jedzenie' ORDER BY k.dataUR LIMIT 5;
+
+SELECT k.nazwa,kk.nazwa FROM kreatura as k, kreatura as kk WHERE k.idKreatury=5+kk.idKreatury ORDER BY k.nazwa;
+
+ 
+
+SELECT k.nazwa, k.dataUR, k.rodzaj FROM kreatura AS k,(SELECT rodzaj,MIN(dataUr) AS min, MAX(dataUr) AS max FROM kreatura as kk GROUP BY rodzaj) AS pod_z WHERE k.rodzaj=pod_z.rodzaj AND k.dataUr=pod_z.min OR k.dataUr=pod_z.max;
+
+
+CREATE TABLE etapy_wyprawy LIKE wikingowie.etapy_wyprawy;
+INSERT INTO etapy_wyprawy SELECT*FROM wikingowie.etapy_wyprawy;
+CREATE TABLE sektor LIKE wikingowie.sektor;
+INSERT INTO sektor SELECT*FROM wikingowie.sektor;
+CREATE TABLE wyprawa LIKE wikingowie.wyprawa;
+INSERT INTO wyprawa SELECT*FROM wikingowie.wyprawa;
